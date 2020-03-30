@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:camera/camera.dart';
 import 'WhatsAppHome.dart';
 
+List<CameraDescription>cameras;
 
-void main()=>runApp(MyApp());
+
+Future<Null>main() async{
+  cameras=await availableCameras();
+  runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -16,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       
     ),
-    home: new WhatsAppHome(),
+    home: new WhatsAppHome(cameras),
     );
   }
 }
